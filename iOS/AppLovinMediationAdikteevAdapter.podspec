@@ -5,12 +5,12 @@ s.authors =
   'AppLovin Corporation' => 'devsupport@applovin.com'
 }
 s.name = 'AppLovinMediationAdikteevAdapter'
-s.version = '1.0.0'
+s.version = '1.0.1'
 s.platform = :ios, '10.0'
 s.summary = 'Adikteev adapter used for mediation with the AppLovin MAX SDK'
 s.homepage = "https://github.com/CocoaPods/Specs/search?o=desc&q=#{s.name}&s=indexed"
-s.license = 
-{ 
+s.license =
+{
   :type => 'Commercial License',
   :text => <<-LICENSE
 
@@ -21,7 +21,7 @@ The AppLovin MAX SDK is available under a commercial license (https://www.applov
 LICENSE
 }
 
-s.source = { :git => "https://github.com/Adikteev/adikteev-applovin-adapter.git", :tag => "#{s.version}" }
+s.source = { :git => "https://github.com/Adikteev/crossdk-applovin-adapter.git", :tag => "#{s.version}" }
 
 s.dependency 'AppLovinSDK'
 
