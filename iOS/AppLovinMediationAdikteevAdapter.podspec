@@ -33,7 +33,7 @@ s.pod_target_xcconfig =
   'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64'
 }
 
-s.vendored_frameworks = 'AdikteevAdapter.xcframework'
+s.vendored_frameworks = 'iOS/AdikteevAdapter.xcframework'
 s.description = <<-DESC
 
 AppLovin turns mobile into the medium of choice for advertisers.
