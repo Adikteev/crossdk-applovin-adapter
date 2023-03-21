@@ -5,12 +5,12 @@ s.authors =
   'AppLovin Corporation' => 'devsupport@applovin.com'
 }
 s.name = 'AppLovinMediationAdikteevAdapter'
-s.version = '1.0.1'
+s.version = '1.0.2'
 s.platform = :ios, '10.0'
 s.summary = 'Adikteev adapter used for mediation with the AppLovin MAX SDK'
 s.homepage = "https://github.com/CocoaPods/Specs/search?o=desc&q=#{s.name}&s=indexed"
-s.license =
-{
+s.license = 
+{ 
   :type => 'Commercial License',
   :text => <<-LICENSE
 
@@ -24,6 +24,7 @@ LICENSE
 s.source = { :git => "https://github.com/Adikteev/crossdk-applovin-adapter.git", :tag => "#{s.version}" }
 
 s.dependency 'AppLovinSDK'
+s.dependency 'CrossDK'
 
 s.pod_target_xcconfig =
 {
@@ -32,6 +33,7 @@ s.pod_target_xcconfig =
   'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64'
 }
 
+s.vendored_frameworks = 'AdikteevAdapter.xcframework'
 s.description = <<-DESC
 
 AppLovin turns mobile into the medium of choice for advertisers.
