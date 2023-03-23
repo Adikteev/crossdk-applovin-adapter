@@ -21,6 +21,9 @@ For testing purposes, you can add your device IDFA to test mode devices [here](h
 For a full guide refer to the Applovin integration documentation for iOS available [here](https://dash.applovin.com/documentation/mediation/ios/getting-started/integration).
 
 ### Installation
+
+You can install the adapter via CocoaPods or manually.
+
 #### CocoaPods
 
 Add the following entry to your Podfile for AppLovinMediationAdikteevAdapter:
