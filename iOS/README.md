@@ -20,6 +20,36 @@ For testing purposes, you can add your device IDFA to test mode devices [here](h
 
 For a full guide refer to the Applovin integration documentation for iOS available [here](https://dash.applovin.com/documentation/mediation/ios/getting-started/integration).
 
+### Installation
+#### CocoaPods
+
+Add the following entry to your Podfile for AppLovinMediationAdikteevAdapter:
+
+```rb
+pod 'AppLovinMediationAdikteevAdapter'
+```
+
+Then run `pod install`.
+
+#### Manually
+
+- Clone Crossdk-applovin-adapter's repository wherever you like in your project. For this example we will clone it in a `Crossdk-applovin-adapter` directory
+
+```bash
+$ git clone https://github.com/Adikteev/crossdk-applovin-adapter.git Crossdk-applovin-adapter
+```
+OR
+
+```bash
+$ git clone ssh://git@github.com:Adikteev/crossdk-applovin-adapter.git Crossdk-applovin-adapter
+```
+
+- Open the new `Crossdk-applovin-adapter/iOS` folder, and drag the `AdikteevAdapter.xcframework` into the Project Navigator of your application's Xcode project. You can put it anywhere inside your project, just make sure you select any target that needs to use CrossDK.
+
+- And that's it!
+
+> XCode will automatically add `AdikteevAdapter.xcframework` to your Link Binary With Libraries Build Phase.
+
 ### Initialize the SDK
 
 Follow AppLovin documentation for initializing the SDK:
