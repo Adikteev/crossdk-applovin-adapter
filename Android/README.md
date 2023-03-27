@@ -1,26 +1,35 @@
 # Adikteev Android AppLovin MAX Adapter
 
-Adikteev AppLovin MAX Adapter is a solution belonging to Adikteev. It provides android adapter to connect AppLovin SDK to Adikteev SDK.
+Adikteev AppLovin MAX Adapter is a solution belonging to Adikteev. It provides android adapter to
+connect AppLovin SDK to Adikteev SDK.
 
-First you need to integrate the AppLovin SDK then you can use our adapter to display a cross promoted ad.
+First you need to integrate the AppLovin SDK then you can use our adapter to display a cross
+promoted ad.
 
 ## Requirements
 
 Create an AppLovin account [here](https://dash.applovin.com/)
 
-Create a custom network (type : SDK; Android / Fire OS Adapter Class Name: `com.YOUR_PACKAGE.AdikteevNetworkMediationAdapter`)
+Create a custom network with the following configuration:
 
-> Example with our package: com.adikteev.mediation.adapters.AdikteevNetworkMediationAdapter
+- type: SDK
+- Android / Fire OS Adapter Class
+  Name: `com.adikteev.mediation.adapters.AdikteevNetworkMediationAdapter`
 
-Create your own Ad Unit for the wanted format (interstitial or rewarded) [here](https://dash.applovin.com/o/mediation/ad_units).
+Create your own Ad Unit for the wanted format (interstitial or
+rewarded) [here](https://dash.applovin.com/o/mediation/ad_units).
 
-For testing purposes, you can add your device GAID to test mode devices [here](https://dash.applovin.com/o/mediation/test_modes/).
+For testing purposes, you can add your device GAID to test mode
+devices [here](https://dash.applovin.com/o/mediation/test_modes/).
 
-> Note : Modification on your AppLovin account is not real time, there may have up to 1 hour of delay.
+> Note : Modification on your AppLovin account is not real time, there may have up to 1 hour of
+> delay.
 
 ## 1. Integrate AppLovin SDK
 
-For a full guide refer to the Applovin integration documentation for android available [here](https://dash.applovin.com/documentation/mediation/android/getting-started/integration).
+For a full guide refer to the Applovin integration documentation for android
+available [here](https://dash.applovin.com/documentation/mediation/android/getting-started/integration)
+.
 
 ### Configuration
 
@@ -101,31 +110,74 @@ Follow the documentation depending on the format you want to use. Currently our 
 
 ## 2. Reference Adikteev SDK (CrossDK)
 
-### CrossDK
+### 2.1. CrossDK
 
-Follow the `Installation` step in the readme of the CrossDK repository to install Adikteev Cross SDK [here](https://github.com/Adikteev/crossdk-android)
+Follow the `Installation` step in the readme of the CrossDK repository to install Adikteev Cross
+SDK [here](https://github.com/Adikteev/crossdk-android)
 
-### Adapter class
+### 2.2. Adapter installation
 
-Copy paste our adapter class from our repository inside your desired package.
+#### 2.2.1. Installation with Github packages
 
-> Example in com.adikteev.mediation.adapters.AdikteevNetworkMediationAdapter
+1. Step 1 : Generate a Personal Access Token for GitHub
 
-### Proguard
+- Inside you GitHub account go to: Settings -> Developer Settings -> Personal Access Tokens ->
+  Generate new token
+- Make sure you select the following scopes (“ write:packages”, “ read:packages”) and Generate a
+  token
+- After Generating make sure to copy your new personal access token. You cannot see it again! The
+  only option is to generate a new key
 
-Add these lines in your `proguard-rules.pro` to keep the class during your deployment:
+2. Step 2 : Update build.gradle inside the application module
+
+- Add the following code to build.gradle inside the app module that will be using the SDK published
+  on GitHub Package Registry
 
 ```groovy
-# Keep class for AppLovin adapter
--keepnames class com.YOUR_PACKAGE.AdikteevNetworkMediationAdapter
--keepclasseswithmembers class com.YOUR_PACKAGE.AdikteevNetworkMediationAdapter
+repositories {
+  maven {
+    name = "GitHubPackages"
+    url = uri("https://maven.pkg.github.com/Adikteev/crossdk-applovin-adapter")
+    credentials {
+      /*
+      *GITHUB_USERID: your github user Id
+      *PERSONAL_ACCESS_TOKEN: The generated access token
+       */
+      username = "GITHUB_USERID"
+      password = "PERSONAL_ACCESS_TOKEN"
+    }
+  }
+}
 ```
 
-> Example with our package : com.adikteev.mediation.adapters.AdikteevNetworkMediationAdapter
+- inside dependencies of the settings.gradle of app module, use the following code:
+
+```groovy
+dependencies {
+  implementation 'com.adikteev:crossdk-adapter-android:x.x.x'
+}
+```
+
+> x.x.x: refers to the version of the adapter
+
+#### 2.2.2. Manual installation
+
+- You can also download manually the adapter release package directly from
+  our [Github package registry page](https://github.com/Adikteev/crossdk-applovin-adapter/packages/1821114)
+- Place the release package inside a lib folder in your android studio project
+- Add these lines into your app build.gradle file:
+
+```groovy
+implementation files('./libs/crossdk-adapter-android-x.x.x.aar')
+```
+
+> x.x.x: refers to the version of the adapter
 
 ## 3. Activate the adapter
 
-On your AppLovin account, edit your Ad Unit format [here](https://dash.applovin.com/o/mediation/ad_units) and enable the Custom Network created previously for Adikteev SDK.
+On your AppLovin account, edit your Ad Unit
+format [here](https://dash.applovin.com/o/mediation/ad_units) and enable the Custom Network created
+previously for Adikteev SDK.
 
 Set the custom parameter:
 
